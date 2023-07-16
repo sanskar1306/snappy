@@ -38,20 +38,21 @@ module.exports.login = async (req, res, next) => {
 
         const { username, password } = req.body;
         console.log(username)
-        const userN = await User.findOne({ username });
+        const user = await User.findOne({ username });
 
-        if (!userN) {
+        if (!user) {
             return res.json({ msg: "Username doesn't exist", status: false });
         }
 
-        const validPwd = await bcrypt.compare(password, userN.password);
+        const validPwd = await bcrypt.compare(password, user.password);
 
         if (!validPwd) {
             return res.json({ msg: "Incorrect Password.", status: false });
         }
 
-        delete userN.password;
-        return res.json({ status: true, userN });
+        delete user, password;
+        console.log(user)
+        return res.json({ status: true, user });
 
     } catch (error) {
         next(error);

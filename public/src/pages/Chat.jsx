@@ -5,11 +5,13 @@ import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import { allUsersRoute } from '../utils/APIRoutes';
 import Contacts from '../components/Contacts';
+import ChatContainer from '../components/ChatContainer';
 
 export default function Chat() {
   const navigate = useNavigate();
   const [contacts, setContacts] = useState([]);
   const [currentUser, setCurrentUser] = useState(undefined);
+  const [currentChat, setCurrentChat] = useState(undefined);
 
   useEffect(() => {
     if (!localStorage.getItem('chat-app-user')) {
@@ -46,17 +48,19 @@ export default function Chat() {
 
 
   const handleChatChange = (chat) => {
-    setCurrentUser(chat)
+    setCurrentChat(chat)
   }
   return (
     <>
       <Container>
-
         <div className="container">
           <Contacts contacts={contacts} changeChat={handleChatChange} />
-          <Welcome />
+          {currentChat === undefined ? (
+            <Welcome />
+          ) : (
+            <ChatContainer currentChat={currentChat}  />
+          )}
         </div>
-
       </Container>
     </>
   )

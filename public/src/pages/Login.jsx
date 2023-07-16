@@ -40,7 +40,8 @@ function Login() {
       if (data.status === false) {
         toast.error(data.msg, toastOptions);
       }
-      if (data.status === true) {
+      console.log(data)
+      if (data.status === true &&  data.user !== undefined) {
         localStorage.setItem('chat-app-user', JSON.stringify(data.user));
         navigate("/");
       }
