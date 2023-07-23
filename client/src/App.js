@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter, Routes, Route,redirect} from 'react-router-dom'
-import { render } from "react-dom";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
 import Chat from './pages/Chat'
 import Login from './pages/Login'
 import SetAvatar from './pages/SetAvatar'
 import Register from './pages/Register'
 export default function App() {
-
-
+ 
   return (
     <BrowserRouter>
       <Routes>     

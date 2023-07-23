@@ -98,6 +98,7 @@ export default function SetAvatar() {
             {avatars?.map((avatar, index) => {
               return (
                 <div
+                  key={index}
                   className={`avatar ${
                     selectedAvatar === index ? "selected" : ""
                   }`}
@@ -105,7 +106,7 @@ export default function SetAvatar() {
                   <img
                     src={`data:image/svg+xml;base64,${avatar}`}
                     alt="avatar"
-                    key={avatar}
+                    
                     onClick={() => setSelectedAvatar(index)}
                   />
                 </div>

@@ -37,7 +37,7 @@ module.exports.login = async (req, res, next) => {
     try {
 
         const { username, password } = req.body;
-        console.log(username)
+        // console.log(username)
         const user = await User.findOne({ username });
 
         if (!user) {
@@ -51,7 +51,7 @@ module.exports.login = async (req, res, next) => {
         }
 
         delete user, password;
-        console.log(user)
+        // console.log(user)
         return res.json({ status: true, user });
 
     } catch (error) {
@@ -60,9 +60,9 @@ module.exports.login = async (req, res, next) => {
 }
 
 module.exports.setAvatar = async (req, res, next) => {
-    console.log(req)
+    // console.log(req)
     try {
-        console.log(req)
+        // console.log(req)
         const userId = req.params.id;
         const avatarImage = req.body.image;
         const userData = await User.findByIdAndUpdate(
