@@ -16,7 +16,7 @@ app.use("/api/avatars", avatarRoutes);
 app.use("/api/messages", messageRoutes);
 const Port = process.env.PORT
 const MongoUri = process.env.MONGO_URL
-
+const ClientUrl = process.env.CLIENT_URL
 mongoose.connect(MongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -33,7 +33,7 @@ const server = app.listen(Port, () => {
 
 const io = socket(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: ClientUrl,
         credentials:true
     }
 })
