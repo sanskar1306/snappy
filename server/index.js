@@ -9,14 +9,23 @@ const app = express();
 require("dotenv").config()
 const bodyParser = require('body-parser');
 app.use(cors());
+
 app.use(express.json());
 app.use(bodyParser.json());
-app.use("/api/auth", userRoutes);
-app.use("/api/avatars", avatarRoutes);
-app.use("/api/messages", messageRoutes);
+
 const Port = process.env.PORT
 const MongoUri = process.env.MONGO_URL
 const ClientUrl = process.env.CLIENT_URL
+const corsOptions = {
+    origin: ClientUrl
+};
+
+app.use(cors(corsOptions));
+
+app.use("/api/auth", userRoutes);
+app.use("/api/avatars", avatarRoutes);
+app.use("/api/messages", messageRoutes);
+
 mongoose.connect(MongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
