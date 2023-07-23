@@ -16,21 +16,8 @@ app.use(bodyParser.json());
 const Port = process.env.PORT
 const MongoUri = process.env.MONGO_URL
 const ClientUrl = process.env.CLIENT_URL
-// const corsOptions = {
-//     origin: ClientUrl
-// };
-
-// app.use(cors(corsOptions));
-
-const allowedOrigins = [ClientUrl, 'http://localhost:3000']; // Add the origins you want to allow here
 const corsOptions = {
-    origin: function (origin, callback) {
-        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+    origin: "*"
 };
 
 app.use(cors(corsOptions));
