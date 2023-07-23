@@ -8,7 +8,7 @@ const messageRoutes = require("./routes/messages.routes.js")
 const app = express();
 require("dotenv").config()
 const bodyParser = require('body-parser');
-app.use(cors());
+// app.use(cors());
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -16,11 +16,11 @@ app.use(bodyParser.json());
 const Port = process.env.PORT
 const MongoUri = process.env.MONGO_URL
 const ClientUrl = process.env.CLIENT_URL
-const corsOptions = {
-    origin: ClientUrl
-};
+// const corsOptions = {
+//     origin: ClientUrl
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 app.use("/api/auth", userRoutes);
 app.use("/api/avatars", avatarRoutes);
