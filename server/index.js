@@ -22,6 +22,19 @@ const ClientUrl = process.env.CLIENT_URL
 
 // app.use(cors(corsOptions));
 
+const allowedOrigins = [ClientUrl, 'http://localhost:3000']; // Add the origins you want to allow here
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+};
+
+app.use(cors(corsOptions));
+
 app.use("/api/auth", userRoutes);
 app.use("/api/avatars", avatarRoutes);
 app.use("/api/messages", messageRoutes);
