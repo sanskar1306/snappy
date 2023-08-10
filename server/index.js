@@ -16,11 +16,9 @@ app.use(bodyParser.json());
 const Port = process.env.PORT
 const MongoUri = process.env.MONGO_URL
 const ClientUrl = process.env.CLIENT_URL
-const corsOptions = {
-    origin: "*"
-};
 
-app.use(cors(corsOptions));
+
+app.use(cors());
 
 app.use("/api/auth", userRoutes);
 app.use("/api/avatars", avatarRoutes);
@@ -42,7 +40,7 @@ const server = app.listen(Port, () => {
 
 const io = socket(server, {
     cors: {
-        origin: ClientUrl,
+        origin: "http://localhost:3000",
         credentials:true
     }
 })
