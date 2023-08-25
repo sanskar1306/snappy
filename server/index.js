@@ -5,6 +5,7 @@ const mongoose = require("mongoose")
 const userRoutes = require("./routes/user.routes.js")
 const avatarRoutes = require("./routes/avatars.routes.js")
 const messageRoutes = require("./routes/messages.routes.js")
+
 const app = express();
 require("dotenv").config()
 const bodyParser = require('body-parser');
@@ -40,8 +41,8 @@ const server = app.listen(Port, () => {
 
 const io = socket(server, {
     cors: {
-        origin: "http://localhost:3000",
-        credentials:true
+        origin: ClientUrl,
+        credentials: true
     }
 })
 
@@ -53,6 +54,8 @@ io.on("connection", (socket) => {
     socket.on("add-user", (userId) => {
         onlineUsers.set(userId, socket.id);
     });
+
+    
 
     socket.on("send-msg", (data) => {
         const sendUserSocket = onlineUsers.get(data.to);
