@@ -2,9 +2,13 @@
 
 Snappy is a realtime chat application built usin React.js, Node.js, MongoDB and Sockets.
 
-- This Repository only contains the frontend for CineCup. Do check the [Backend](https://github.com/sanskar1306/snappy).
 
-![Home page](<https://github.com/Shikhar15606/CineCup/blob/main/screenshots/Screenshot%20(41).png?raw=true>)
+![Login page](<https://github.com/sanskar1306/snappy/blob/main/screenshots/login.png>)
+![Signup page](<https://github.com/sanskar1306/snappy/blob/main/screenshots/signup.png>)
+![Avatar page](<https://github.com/sanskar1306/snappy/blob/main/screenshots/avatar.png>)
+![Home page](<https://github.com/sanskar1306/snappy/blob/main/screenshots/chat.png>)
+![Chat page](<https://github.com/sanskar1306/snappy/blob/main/screenshots/chat-container.png>)
+
 
 
 ## Main features
